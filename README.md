@@ -8,9 +8,9 @@
 
 This repository contains the source code for the **Smart Admission and Campus Navigation System (SACNS)** developed as part of the NPRT63 Project course at **Sol Plaatje University**.
 
-The system assists prospective students by calculating their Admission Point Score (APS) and recommending programmes they qualify for based on the university's admission requirements. It also assists current students by providing campus navigation to lecture venues and important campus facilities.
+The system assists prospective students by calculating their Admission Point Score (APS) and recommending programmes they qualify for in line with the university's admission requirements. It also assists current students by providing campus navigation to lecture venues and important campus facilities.
 
-The system implements **Role-Based Access Control (RBAC)** to provide different functionality for Prospective Students, Current Students and Administrators.
+The system implements **Role-Based Access Control (RBAC)** to provide different functionality for Prospective Students, Current Students, and Administrators.
 
 Written in Java using **Android Studio**.
 
@@ -69,7 +69,7 @@ Written in Java using **Android Studio**.
 ### Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Smart-Admission-Campus-Navigation-System.git --depth=1
+git clone https://github.com/OlebengSeeme3044/Smart-Admission-Campus-Navigation-System.git --depth=1
 ```
 
 ### Run the project
