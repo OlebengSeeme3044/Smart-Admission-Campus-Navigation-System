@@ -26,84 +26,112 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <!-- Lock Icon -->
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginBottom="18dp"
-                android:background="@drawable/circle_blue"
-                android:gravity="center"
-                android:text="🔒"
-                android:textSize="32sp" />
-
-            <!-- Welcome Back -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Welcome Back"
-                android:textColor="#101010"
-                android:textSize="29sp"
-                android:textStyle="bold" />
-
-            <!-- Subtitle -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="24dp"
-                android:text="Login to access SACNS"
-                android:textColor="#52647A"
-                android:textSize="16sp" />
-
-            <!-- Role Selection -->
+            <!-- Header Ribbon -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
+                android:background="#125A87"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="32dp"
+                android:paddingBottom="32dp">
+
+                <!-- Graduation Cap Icon -->
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/circle_blue"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_graduation_cap"
+                    android:contentDescription="Graduation cap icon" />
+
+                <!-- Welcome Back -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome Back"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <!-- Login to access SACNS -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Login to access SACNS"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <!-- Content Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+            <!-- Role Selection -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I am a:"
+                android:textColor="#52647A"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"
+                android:layout_gravity="start"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnProspective"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="56dp"
                     android:layout_weight="1"
                     android:backgroundTint="#0F5682"
                     android:text="Prospective"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
-                    android:textSize="14sp" />
-
-                <Space
-                    android:layout_width="8dp"
-                    android:layout_height="match_parent" />
+                    android:textSize="10sp"
+                    android:maxLines="1"
+                    android:ellipsize="none"
+                    android:gravity="center" />
 
                 <Button
                     android:id="@+id/btnCurrent"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="56dp"
                     android:layout_weight="1"
                     android:backgroundTint="#EEF2F7"
                     android:text="Current"
                     android:textAllCaps="false"
                     android:textColor="#52647A"
-                    android:textSize="14sp" />
-
-                <Space
-                    android:layout_width="8dp"
-                    android:layout_height="match_parent" />
+                    android:textSize="10sp"
+                    android:maxLines="1"
+                    android:ellipsize="none"
+                    android:gravity="center" />
 
                 <Button
                     android:id="@+id/btnAdmin"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="56dp"
                     android:layout_weight="1"
                     android:backgroundTint="#EEF2F7"
                     android:text="Admin"
                     android:textAllCaps="false"
                     android:textColor="#52647A"
-                    android:textSize="14sp" />
+                    android:textSize="10sp"
+                    android:maxLines="1"
+                    android:ellipsize="none"
+                    android:gravity="center" />
 
             </LinearLayout>
 
@@ -168,6 +196,20 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
+
+            <!-- Register Link -->
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="@android:color/transparent"
+                android:text="Don't have an account? Register"
+                android:textAllCaps="false"
+                android:textColor="#0F5682"
+                android:textSize="14sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

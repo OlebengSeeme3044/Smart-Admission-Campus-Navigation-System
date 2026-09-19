@@ -29,14 +29,14 @@
             android:padding="28dp">
 
             <!-- Graduation Icon -->
-            <TextView
+            <ImageView
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/circle_blue"
-                android:gravity="center"
-                android:text="🎓"
-                android:textSize="38sp" />
+                android:padding="24dp"
+                android:src="@drawable/ic_graduation_cap"
+                android:contentDescription="Graduation cap icon" />
 
             <!-- System Name -->
             <TextView

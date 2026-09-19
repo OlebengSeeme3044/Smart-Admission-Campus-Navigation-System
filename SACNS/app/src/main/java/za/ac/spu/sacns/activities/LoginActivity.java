@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnCurrent;
     private Button btnAdmin;
     private Button btnLogin;
+    private Button btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         setupRoleSelection();
         updateRoleButtons();
         setupLogin();
+        setupRegistration();
     }
 
     private void initializeViews() {
@@ -57,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         btnCurrent = findViewById(R.id.btnCurrent);
         btnAdmin = findViewById(R.id.btnAdmin);
         btnLogin = findViewById(R.id.btnLogin);
+        btnRegister = findViewById(R.id.btnRegister);
     }
 
     private void setupRoleSelection() {
@@ -161,15 +164,29 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
 
                     if (task.isSuccessful()) {
-
                         FirebaseUser user = mAuth.getCurrentUser();
 
                         if (user != null) {
 
-                            // Step 2: Get the Firebase Authentication UID
+                            // Check whether the user's email has been verified
+                            if (!user.isEmailVerified()) {
+
+                                btnLogin.setEnabled(true);
+
+                                Toast.makeText(
+                                        LoginActivity.this,
+                                        "Please verify your email address before logging in.",
+                                        Toast.LENGTH_LONG
+                                ).show();
+
+                                return;
+                            }
+
+                            // Email is verified.
+                            // Get the Firebase Authentication UID.
                             String uid = user.getUid();
 
-                            // Step 3: Find the matching user document in Firestore
+                            // Find the matching user document in Firestore.
                             getUserRole(uid);
 
                         } else {
@@ -272,6 +289,21 @@ public class LoginActivity extends AppCompatActivity {
                         ).show();
                     }
                 });
+    }
+
+    private void setupRegistration() {
+
+        btnRegister.setOnClickListener(v -> {
+
+            Intent intent = new Intent(
+                    LoginActivity.this,
+                    RegisterActivity.class
+            );
+
+            intent.putExtra("USER_ROLE", selectedRole);
+
+            startActivity(intent);
+        });
     }
 
     private void navigateToDashboard(String role) {
