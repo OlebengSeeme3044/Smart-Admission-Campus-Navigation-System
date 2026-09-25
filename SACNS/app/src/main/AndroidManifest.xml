@@ -13,7 +13,7 @@
         android:theme="@style/Theme.SACNS">
 
         <activity
-            android:name=".activities.LandingActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
 
             <intent-filter>
@@ -27,9 +27,7 @@
             android:name=".activities.LoginActivity"
             android:exported="false" />
 
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+
 
     </application>
 </manifest>
