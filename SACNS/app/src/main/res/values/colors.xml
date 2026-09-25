@@ -2,5 +2,37 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- Brand Sol Plaatje University Colors -->
     <color name="sacns_blue">#0F5682</color>
+    <color name="spu_navy">#0B324F</color>
+    <color name="spu_navy_dark">#08263D</color>
+    <color name="spu_banner_blue">#0C3C62</color>
+    <color name="spu_blue_accent">#0284C7</color>
+    <color name="spu_blue_light">#E0F2FE</color>
+
+    <!-- Status Colors -->
+    <color name="green_base">#16A34A</color>
+    <color name="green_border">#86EFAC</color>
+    <color name="green_bg">#F0FDF4</color>
+    <color name="green_text">#166534</color>
+
+    <color name="amber_base">#F59E0B</color>
+    <color name="amber_border">#FDE68A</color>
+    <color name="amber_bg">#FFFBEB</color>
+    <color name="amber_text">#92400E</color>
+
+    <color name="red_base">#EF4444</color>
+    <color name="red_border">#FCA5A5</color>
+    <color name="red_bg">#FEF2F2</color>
+    <color name="red_text">#991B1B</color>
+
+    <!-- Surface & Text -->
+    <color name="bg_page">#EEF2F6</color>
+    <color name="bg_card">#FFFFFF</color>
+    <color name="border_subtle">#E2E8F0</color>
+    <color name="border_strong">#CBD5E1</color>
+    <color name="text_main">#0F172A</color>
+    <color name="text_secondary">#475569</color>
+    <color name="text_muted">#64748B</color>
 </resources>

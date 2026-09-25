@@ -1,19 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/bg_page"
+    tools:context=".activities.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Main Hub Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- SPU Blue Header Banner -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/spu_banner_blue"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:background="@drawable/circle_blue"
+                                android:padding="10dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_graduation_cap"
+                                app:tint="@color/white"
+                                android:contentDescription="Graduation Cap"
+                                android:layout_marginEnd="12dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvWelcomeUser"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Welcome to SACNS"
+                                    android:textColor="@color/white"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Sol Plaatje University Portal"
+                                    android:textColor="#CBD5E1"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
+                            <!-- Role Badge -->
+                            <TextView
+                                android:id="@+id/tvUserRoleBadge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="#20FFFFFF"
+                                android:textColor="@color/white"
+                                android:text="Prospective"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp" />
+
+                        </LinearLayout>
+
+                        <!-- Sub-bar with quick actions: Switch Role & Logout -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="end"
+                            android:layout_marginTop="14dp">
+
+                            <Button
+                                android:id="@+id/btnSwitchRole"
+                                android:layout_width="wrap_content"
+                                android:layout_height="36dp"
+                                android:backgroundTint="#30FFFFFF"
+                                android:text="Switch Role"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textSize="12sp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:layout_marginEnd="8dp" />
+
+                            <Button
+                                android:id="@+id/btnLogout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="36dp"
+                                android:backgroundTint="#30FFFFFF"
+                                android:text="Sign Out"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textSize="12sp"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Body Content -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <!-- APS Status Teaser Banner -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardApsTeaser"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="2dp"
+                            app:cardBackgroundColor="@color/green_bg">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:padding="16dp">
+
+                                <TextView
+                                    android:id="@+id/tvTeaserApsScore"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:background="@drawable/bg_aps_result"
+                                    android:gravity="center"
+                                    android:text="35"
+                                    android:textColor="@color/spu_navy"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="14dp" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Your Admission Point Score (APS)"
+                                        android:textColor="@color/spu_navy"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/tvTeaserQualifiedCount"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="You currently qualify for 5 university programmes"
+                                        android:textColor="@color/green_text"
+                                        android:textSize="12sp" />
+                                </LinearLayout>
+
+                                <Button
+                                    android:id="@+id/btnQuickViewRecs"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="38dp"
+                                    android:backgroundTint="@color/green_base"
+                                    android:text="View Recs →"
+                                    android:textAllCaps="false"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    app:cornerRadius="6dp" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- Section: Core System Features -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="System Modules"
+                            android:textColor="@color/spu_navy"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="12dp" />
+
+                        <!-- RecyclerView for feature modules -->
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvDashboardModules"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false"
+                            android:layout_marginBottom="20dp" />
+
+                        <!-- Section: University Degree Programmes with Search -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="10dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="SPU Degree Programmes"
+                                android:textColor="@color/spu_navy"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvProgrammeCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="8 Programmes"
+                                android:textColor="@color/text_muted"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- Search Bar -->
+                        <EditText
+                            android:id="@+id/etSearchProgrammes"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:background="@drawable/bg_input_field"
+                            android:drawableStart="@drawable/ic_search"
+                            android:drawablePadding="10dp"
+                            android:hint="Search by programme name or faculty..."
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:textSize="13sp"
+                            android:textColor="@color/text_main"
+                            android:layout_marginBottom="12dp" />
+
+                        <!-- RecyclerView for programmes -->
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvFeaturedProgrammes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

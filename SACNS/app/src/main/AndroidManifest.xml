@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Network permissions for Firebase Authentication & Firestore -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,24 +16,52 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SACNS">
 
+        <!-- Main Hub & Dashboard Activity (Launcher) -->
         <activity
-            android:name=".activities.LandingActivity"
-            android:exported="true">
-
+            android:name=".activities.MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
+        <!-- Role Landing Activity -->
+        <activity
+            android:name=".activities.LandingActivity"
+            android:exported="true" />
+
+        <!-- User Authentication Activity -->
         <activity
             android:name=".activities.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
+        <!-- Admin Control Panel Activity (Advanced features) -->
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+            android:name=".activities.AdminPanelActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"
+            android:label="Admin Panel" />
+
+        <!-- Programme Recommendations Activity (Interactive & user friendly) -->
+        <activity
+            android:name=".activities.ProgrammeRecommendationsActivity"
+            android:exported="false"
+            android:label="Programme Recommendations" />
+
+        <!-- APS Calculator Activity -->
+        <activity
+            android:name=".activities.ApsCalculatorActivity"
+            android:exported="false"
+            android:label="APS Calculator" />
+
+        <!-- Campus Navigation & Route Finder Activity -->
+        <activity
+            android:name=".activities.CampusNavigationActivity"
+            android:exported="false"
+            android:label="Campus Navigation" />
 
     </application>
 </manifest>

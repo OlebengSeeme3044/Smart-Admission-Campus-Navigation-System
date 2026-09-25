@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardDashboardModule"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <!-- Module Icon Circle -->
+        <ImageView
+            android:id="@+id/ivModuleIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/circle_blue"
+            android:padding="11dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_calculator"
+            app:tint="@color/white"
+            android:contentDescription="Module Icon"
+            android:layout_marginEnd="14dp" />
+
+        <!-- Info Column -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvModuleTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="APS Calculator"
+                    android:textColor="@color/spu_navy"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvModuleBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#E0F2FE"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:text="Prospective"
+                    android:textColor="#0369A1"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvModuleDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Calculate your admission point score from high school subject marks"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+        </LinearLayout>
+
+        <!-- Right Arrow Icon -->
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_chevron_right"
+            app:tint="@color/spu_blue_accent"
+            android:contentDescription="Open module"
+            android:layout_marginStart="10dp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
