@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_page">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Outer White Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Blue Header Banner (Matches Figma Screenshot) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/spu_banner_blue"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingStart="24dp"
+                        android:paddingEnd="24dp"
+                        android:paddingTop="18dp"
+                        android:paddingBottom="18dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/circle_blue"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_calculator"
+                            app:tint="@color/white"
+                            android:contentDescription="APS Calculator"
+                            android:layout_marginEnd="12dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="APS Calculator"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Card Body -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="24dp">
+
+                        <!-- Subject Row 1 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="28dp"
+                                android:layout_height="wrap_content"
+                                android:text="1"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center" />
+
+                            <EditText
+                                android:id="@+id/etSubject1"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:text="Mathematics"
+                                android:textColor="@color/text_main"
+                                android:textSize="14sp" />
+
+                            <Spinner
+                                android:id="@+id/spLevel1"
+                                android:layout_width="120dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/bg_input_field"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp" />
+                        </LinearLayout>
+
+                        <!-- Subject Row 2 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="28dp"
+                                android:layout_height="wrap_content"
+                                android:text="2"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center" />
+
+                            <EditText
+                                android:id="@+id/etSubject2"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:text="Mathematics"
+                                android:textColor="@color/text_main"
+                                android:textSize="14sp" />
+
+                            <Spinner
+                                android:id="@+id/spLevel2"
+                                android:layout_width="120dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/bg_input_field"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp" />
+                        </LinearLayout>
+
+                        <!-- Subject Row 3 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="28dp"
+                                android:layout_height="wrap_content"
+                                android:text="3"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center" />
+
+                            <EditText
+                                android:id="@+id/etSubject3"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:text="Mathematics"
+                                android:textColor="@color/text_main"
+                                android:textSize="14sp" />
+
+                            <Spinner
+                                android:id="@+id/spLevel3"
+                                android:layout_width="120dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/bg_input_field"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp" />
+                        </LinearLayout>
+
+                        <!-- Subject Row 4 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="28dp"
+                                android:layout_height="wrap_content"
+                                android:text="4"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center" />
+
+                            <EditText
+                                android:id="@+id/etSubject4"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:text="English (Home Language)"
+                                android:textColor="@color/text_main"
+                                android:textSize="14sp" />
+
+                            <Spinner
+                                android:id="@+id/spLevel4"
+                                android:layout_width="120dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/bg_input_field"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp" />
+                        </LinearLayout>
+
+                        <!-- Subject Row 5 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="12dp">
+
+                            <TextView
+                                android:layout_width="28dp"
+                                android:layout_height="wrap_content"
+                                android:text="5"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center" />
+
+                            <EditText
+                                android:id="@+id/etSubject5"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:text="Physical Sciences"
+                                android:textColor="@color/text_main"
+                                android:textSize="14sp" />
+
+                            <Spinner
+                                android:id="@+id/spLevel5"
+                                android:layout_width="120dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/bg_input_field"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp" />
+                        </LinearLayout>
+
+                        <!-- Subject Row 6 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="24dp">
+
+                            <TextView
+                                android:layout_width="28dp"
+                                android:layout_height="wrap_content"
+                                android:text="6"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:gravity="center" />
+
+                            <EditText
+                                android:id="@+id/etSubject6"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:text="Life Orientation"
+                                android:textColor="@color/text_main"
+                                android:textSize="14sp" />
+
+                            <Spinner
+                                android:id="@+id/spLevel6"
+                                android:layout_width="120dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/bg_input_field"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp" />
+                        </LinearLayout>
+
+                        <!-- Wide Calculate APS Button (Matches Screenshot) -->
+                        <Button
+                            android:id="@+id/btnCalculateAPS"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:backgroundTint="@color/spu_navy"
+                            android:text="Calculate APS"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:cornerRadius="8dp" />
+
+                        <!-- Total APS Score Result Card (Matches Screenshot Exactly) -->
+                        <LinearLayout
+                            android:id="@+id/layoutApsResult"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/bg_aps_result"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Your Total APS Score"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvTotalApsScore"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="35"
+                                android:textColor="@color/spu_navy"
+                                android:textSize="48sp"
+                                android:textStyle="bold"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="12dp" />
+
+                            <Button
+                                android:id="@+id/btnViewRecommendations"
+                                android:layout_width="wrap_content"
+                                android:layout_height="44dp"
+                                android:backgroundTint="@color/green_base"
+                                android:text="View Programme Recommendations →"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                app:cornerRadius="8dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

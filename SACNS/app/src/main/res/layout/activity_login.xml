@@ -38,15 +38,17 @@
                 android:paddingTop="32dp"
                 android:paddingBottom="32dp">
 
-                <!-- Graduation Cap Icon -->
+                <!-- Lock Icon -->
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/circle_blue"
                     android:padding="20dp"
-                    android:src="@drawable/ic_graduation_cap"
-                    android:contentDescription="Graduation cap icon" />
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_lock"
+                    app:tint="@color/white"
+                    android:contentDescription="Lock" />
 
                 <!-- Welcome Back -->
                 <TextView
@@ -76,138 +78,138 @@
                 android:orientation="vertical"
                 android:padding="24dp">
 
-            <!-- Role Selection -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I am a:"
-                android:textColor="#52647A"
-                android:textSize="16sp"
-                android:layout_marginBottom="8dp"
-                android:layout_gravity="start"/>
+                <!-- Role Selection -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginBottom="8dp"
+                    android:text="I am a:"
+                    android:textColor="#52647A"
+                    android:textSize="16sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
+                    <Button
+                        android:id="@+id/btnProspective"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#0F5682"
+                        android:ellipsize="none"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="Prospective"
+                        android:textAllCaps="false"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp" />
+
+                    <Button
+                        android:id="@+id/btnCurrent"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#EEF2F7"
+                        android:ellipsize="none"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="Current"
+                        android:textAllCaps="false"
+                        android:textColor="#52647A"
+                        android:textSize="10sp" />
+
+                    <Button
+                        android:id="@+id/btnAdmin"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#EEF2F7"
+                        android:ellipsize="none"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="Admin"
+                        android:textAllCaps="false"
+                        android:textColor="#52647A"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+
+                <!-- Email -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emailLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:hint="Email Address"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="#D8E0EA"
+                    app:startIconDrawable="@android:drawable/ic_dialog_email">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Password -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passwordLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="Password"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="#D8E0EA"
+                    app:endIconMode="password_toggle"
+                    app:startIconDrawable="@android:drawable/ic_lock_lock">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Login Button -->
                 <Button
-                    android:id="@+id/btnProspective"
-                    android:layout_width="0dp"
-                    android:layout_height="56dp"
-                    android:layout_weight="1"
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="16dp"
                     android:backgroundTint="#0F5682"
-                    android:text="Prospective"
+                    android:text="Login"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
-                    android:textSize="10sp"
-                    android:maxLines="1"
-                    android:ellipsize="none"
-                    android:gravity="center" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
+                <!-- Register Link -->
                 <Button
-                    android:id="@+id/btnCurrent"
-                    android:layout_width="0dp"
-                    android:layout_height="56dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#EEF2F7"
-                    android:text="Current"
-                    android:textAllCaps="false"
-                    android:textColor="#52647A"
-                    android:textSize="10sp"
-                    android:maxLines="1"
-                    android:ellipsize="none"
-                    android:gravity="center" />
-
-                <Button
-                    android:id="@+id/btnAdmin"
-                    android:layout_width="0dp"
-                    android:layout_height="56dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#EEF2F7"
-                    android:text="Admin"
-                    android:textAllCaps="false"
-                    android:textColor="#52647A"
-                    android:textSize="10sp"
-                    android:maxLines="1"
-                    android:ellipsize="none"
-                    android:gravity="center" />
-
-            </LinearLayout>
-
-            <!-- Email -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/emailLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:hint="Email Address"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusTopStart="12dp"
-                app:boxStrokeColor="#D8E0EA"
-                app:startIconDrawable="@android:drawable/ic_dialog_email">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmail"
+                    android:id="@+id/btnRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:textSize="16sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Password -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/passwordLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:hint="Password"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusTopStart="12dp"
-                app:boxStrokeColor="#D8E0EA"
-                app:endIconMode="password_toggle"
-                app:startIconDrawable="@android:drawable/ic_lock_lock">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:textSize="16sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Login Button -->
-            <Button
-                android:id="@+id/btnLogin"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="#0F5682"
-                android:text="Login"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <!-- Register Link -->
-            <Button
-                android:id="@+id/btnRegister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:backgroundTint="@android:color/transparent"
-                android:text="Don't have an account? Register"
-                android:textAllCaps="false"
-                android:textColor="#0F5682"
-                android:textSize="14sp" />
+                    android:layout_marginTop="4dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:text="Don't have an account? Register"
+                    android:textAllCaps="false"
+                    android:textColor="#0F5682"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 

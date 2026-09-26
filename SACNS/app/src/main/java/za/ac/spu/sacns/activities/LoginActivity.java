@@ -307,51 +307,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void navigateToDashboard(String role) {
-
-        switch (role) {
-
-            case "Prospective":
-
-                // Dashboard will be connected here
-                Toast.makeText(
-                        this,
-                        "Opening Prospective Student Dashboard",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                break;
-
-            case "Current":
-
-                // Dashboard will be connected here
-                Toast.makeText(
-                        this,
-                        "Opening Current Student Dashboard",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                break;
-
-            case "Admin":
-
-                // Dashboard will be connected here
-                Toast.makeText(
-                        this,
-                        "Opening Admin Dashboard",
-                        Toast.LENGTH_SHORT
-                ).show();
-
-                break;
-
-            default:
-
-                Toast.makeText(
-                        this,
-                        "Unknown user role.",
-                        Toast.LENGTH_LONG
-                ).show();
-
-                break;
+        Intent intent;
+        if ("Admin".equalsIgnoreCase(role)) {
+            intent = new Intent(LoginActivity.this, AdminPanelActivity.class);
+        } else {
+            intent = new Intent(LoginActivity.this, MainActivity.class);
         }
+        intent.putExtra("USER_ROLE", role);
+        startActivity(intent);
+        finish();
     }
 }
