@@ -3,6 +3,7 @@
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
+
     <!-- Graduation Cap - All White Color -->
     <path
         android:fillColor="#FFFFFFFF"
