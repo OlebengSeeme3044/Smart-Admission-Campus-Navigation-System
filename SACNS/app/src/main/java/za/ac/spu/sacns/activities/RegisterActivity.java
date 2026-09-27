@@ -505,7 +505,8 @@ public class RegisterActivity extends AppCompatActivity {
                     phone,
                     idPassport,
                     country,
-                    password
+                    password,
+                    false
             );
         }
     }
@@ -575,7 +576,8 @@ public class RegisterActivity extends AppCompatActivity {
                             phone,
                             idPassport,
                             country,
-                            password
+                            password,
+                            true
                     );
                 });
     }
@@ -587,7 +589,8 @@ public class RegisterActivity extends AppCompatActivity {
             String phone,
             String idPassport,
             String country,
-            String password) {
+            String password,
+            boolean requireEmailVerification) {
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
