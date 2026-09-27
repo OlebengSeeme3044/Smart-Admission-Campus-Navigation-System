@@ -10,22 +10,35 @@ import java.util.Map;
 public class Programme implements Serializable {
     private long id;
     private String name;
-    private String department;
+    private String department; // Faculty
     private int minAps;
     private String duration;
     private String requirements;
+    private String nqfLevel;
+    private String saqaId;
+    private String qualificationType;
+    private String careerOpportunities;
 
     public Programme() {
         // Default constructor required for Firebase & serialization
     }
 
     public Programme(long id, String name, String department, int minAps, String duration, String requirements) {
+        this(id, name, department, minAps, duration, requirements, "NQF Level 7", "", "Bachelor's Degree", "");
+    }
+
+    public Programme(long id, String name, String department, int minAps, String duration, String requirements,
+                     String nqfLevel, String saqaId, String qualificationType, String careerOpportunities) {
         this.id = id;
         this.name = name;
         this.department = department;
         this.minAps = minAps;
         this.duration = duration;
         this.requirements = requirements;
+        this.nqfLevel = nqfLevel;
+        this.saqaId = saqaId;
+        this.qualificationType = qualificationType;
+        this.careerOpportunities = careerOpportunities;
     }
 
     public long getId() {
@@ -76,6 +89,38 @@ public class Programme implements Serializable {
         this.requirements = requirements;
     }
 
+    public String getNqfLevel() {
+        return nqfLevel != null && !nqfLevel.isEmpty() ? nqfLevel : "NQF Level 7";
+    }
+
+    public void setNqfLevel(String nqfLevel) {
+        this.nqfLevel = nqfLevel;
+    }
+
+    public String getSaqaId() {
+        return saqaId != null ? saqaId : "";
+    }
+
+    public void setSaqaId(String saqaId) {
+        this.saqaId = saqaId;
+    }
+
+    public String getQualificationType() {
+        return qualificationType != null && !qualificationType.isEmpty() ? qualificationType : "Bachelor's Degree";
+    }
+
+    public void setQualificationType(String qualificationType) {
+        this.qualificationType = qualificationType;
+    }
+
+    public String getCareerOpportunities() {
+        return careerOpportunities != null ? careerOpportunities : "";
+    }
+
+    public void setCareerOpportunities(String careerOpportunities) {
+        this.careerOpportunities = careerOpportunities;
+    }
+
     /**
      * Helper to classify qualification status for a given APS score:
      * - "qualified" if userAps >= minAps
@@ -100,6 +145,10 @@ public class Programme implements Serializable {
         map.put("minAps", minAps);
         map.put("duration", duration);
         map.put("requirements", requirements);
+        map.put("nqfLevel", getNqfLevel());
+        map.put("saqaId", getSaqaId());
+        map.put("qualificationType", getQualificationType());
+        map.put("careerOpportunities", getCareerOpportunities());
         return map;
     }
 
@@ -111,6 +160,10 @@ public class Programme implements Serializable {
         json.put("minAps", minAps);
         json.put("duration", duration);
         json.put("requirements", requirements);
+        json.put("nqfLevel", getNqfLevel());
+        json.put("saqaId", getSaqaId());
+        json.put("qualificationType", getQualificationType());
+        json.put("careerOpportunities", getCareerOpportunities());
         return json;
     }
 
@@ -122,7 +175,11 @@ public class Programme implements Serializable {
                 json.optString("department", ""),
                 json.optInt("minAps", 25),
                 json.optString("duration", "3 years"),
-                json.optString("requirements", "")
+                json.optString("requirements", ""),
+                json.optString("nqfLevel", "NQF Level 7"),
+                json.optString("saqaId", ""),
+                json.optString("qualificationType", "Bachelor's Degree"),
+                json.optString("careerOpportunities", "")
         );
     }
 }

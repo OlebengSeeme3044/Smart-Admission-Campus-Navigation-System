@@ -307,12 +307,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void navigateToDashboard(String role) {
-        Intent intent;
         if ("Admin".equalsIgnoreCase(role)) {
-            intent = new Intent(LoginActivity.this, AdminPanelActivity.class);
-        } else {
-            intent = new Intent(LoginActivity.this, MainActivity.class);
+            Toast.makeText(this, "Admin Panel is managed on the feature/admin-panel branch for Sol Plaatje University staff.", Toast.LENGTH_LONG).show();
+            return;
         }
+        Intent intent = new Intent(LoginActivity.this, ProgrammeRecommendationsActivity.class);
         intent.putExtra("USER_ROLE", role);
         startActivity(intent);
         finish();

@@ -32,29 +32,27 @@ public class LandingActivity extends AppCompatActivity {
     }
 
     private void setupRoleButtons() {
-
-        btnProspective.setOnClickListener(v ->
-                openLogin("Prospective")
-        );
+        btnProspective.setOnClickListener(v -> {
+            Intent intent = new Intent(LandingActivity.this, ProgrammeRecommendationsActivity.class);
+            intent.putExtra("USER_ROLE", "Prospective");
+            startActivity(intent);
+        });
 
         btnCurrent.setOnClickListener(v ->
                 openLogin("Current")
         );
 
-        btnAdmin.setOnClickListener(v ->
-                openLogin("Admin")
-        );
+        btnAdmin.setOnClickListener(v -> {
+            openLogin("Admin");
+        });
     }
 
     private void openLogin(String role) {
-
         Intent intent = new Intent(
                 LandingActivity.this,
                 LoginActivity.class
         );
-
         intent.putExtra("USER_ROLE", role);
-
         startActivity(intent);
     }
 }

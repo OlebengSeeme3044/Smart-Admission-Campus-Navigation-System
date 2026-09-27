@@ -15,278 +15,166 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="12dp">
 
-            <!-- Outer Card -->
+            <!-- Banner Header -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
+                app:cardBackgroundColor="@color/spu_banner_blue">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageButton
+                            android:id="@+id/btnRecsBack"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:background="@drawable/circle_blue"
+                            android:src="@android:drawable/ic_menu_revert"
+                            app:tint="@color/white"
+                            android:contentDescription="Back"
+                            android:layout_marginEnd="10dp" />
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:background="@drawable/circle_blue"
+                            android:padding="8dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_graduation_cap"
+                            app:tint="@color/white"
+                            android:contentDescription="SPU Emblem"
+                            android:layout_marginEnd="10dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sol Plaatje University"
+                                android:textColor="#93C5FD"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Programme Recommendations"
+                                android:textColor="@color/white"
+                                android:textSize="17sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="2026 Undergraduate Admissions"
+                                android:textColor="#E2E8F0"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btnRecsHelp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="34dp"
+                            android:backgroundTint="#30FFFFFF"
+                            android:text="Prospectus Rules"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card 1: 2026 Prospectus APS Calculator Section -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="3dp"
                 app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                    <!-- Banner Header -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/spu_banner_blue"
-                        android:orientation="vertical"
-                        android:padding="20dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical">
-
-                            <!-- Back Navigation -->
-                            <ImageButton
-                                android:id="@+id/btnRecsBack"
-                                android:layout_width="38dp"
-                                android:layout_height="38dp"
-                                android:background="@drawable/circle_blue"
-                                android:src="@android:drawable/ic_menu_revert"
-                                app:tint="@color/white"
-                                android:contentDescription="Back"
-                                android:layout_marginEnd="10dp" />
-
-                            <ImageView
-                                android:layout_width="38dp"
-                                android:layout_height="38dp"
-                                android:background="@drawable/circle_blue"
-                                android:padding="8dp"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/ic_graduation_cap"
-                                app:tint="@color/white"
-                                android:contentDescription="Programme Recommendations"
-                                android:layout_marginEnd="12dp" />
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Programme Recommendations"
-                                    android:textColor="@color/white"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/tvApsCaption"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Based on your APS score of 35 points"
-                                    android:textColor="#CBD5E1"
-                                    android:textSize="13sp" />
-                            </LinearLayout>
-
-                            <!-- First-Time User Help / Guide Button -->
-                            <Button
-                                android:id="@+id/btnRecsHelp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="34dp"
-                                android:backgroundTint="#30FFFFFF"
-                                android:text="APS Guide"
-                                android:textAllCaps="false"
-                                android:textColor="@color/white"
-                                android:textSize="11sp"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp" />
-
-                        </LinearLayout>
-
-                        <!-- Interactive APS Adjuster Slider -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginTop="16dp"
-                            android:background="#20FFFFFF"
-                            android:padding="10dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Adjust APS: "
-                                android:textColor="@color/white"
-                                android:textSize="13sp"
-                                android:textStyle="bold" />
-
-                            <SeekBar
-                                android:id="@+id/sbApsScore"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:max="50"
-                                android:min="15"
-                                android:progress="35"
-                                android:progressTint="@color/white"
-                                android:thumbTint="@color/white" />
-
-                            <TextView
-                                android:id="@+id/tvSliderApsVal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="35"
-                                android:textColor="@color/spu_navy"
-                                android:textStyle="bold"
-                                android:background="@color/white"
-                                android:paddingStart="8dp"
-                                android:paddingEnd="8dp"
-                                android:paddingTop="2dp"
-                                android:paddingBottom="2dp" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <!-- 3 Status Summary Cards Row -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:paddingTop="20dp"
-                        android:paddingBottom="12dp">
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="6dp">
 
-                        <!-- 1. Qualified Card (Green) -->
-                        <LinearLayout
-                            android:id="@+id/cardQualified"
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_calculator"
+                            app:tint="@color/sacns_blue"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_marginEnd="6dp"
-                            android:background="@drawable/bg_status_qualified"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:padding="12dp"
-                            android:clickable="true"
-                            android:focusable="true">
+                            android:text="SPU APS Calculator (2026 Prospectus)"
+                            android:textColor="@color/text_main"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
 
-                            <ImageView
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
-                                android:src="@drawable/ic_check_circle"
-                                app:tint="@color/green_base"
-                                android:contentDescription="Qualified" />
-
-                            <TextView
-                                android:id="@+id/tvCountQualified"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="5"
-                                android:textColor="@color/green_text"
-                                android:textSize="26sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Qualified"
-                                android:textColor="@color/green_text"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <!-- 2. Borderline Card (Amber) -->
-                        <LinearLayout
-                            android:id="@+id/cardBorderline"
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/tvToggleCalcView"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginEnd="4dp"
-                            android:background="@drawable/bg_status_borderline"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:padding="12dp"
-                            android:clickable="true"
-                            android:focusable="true">
-
-                            <ImageView
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
-                                android:src="@drawable/ic_warning_circle"
-                                app:tint="@color/amber_base"
-                                android:contentDescription="Borderline" />
-
-                            <TextView
-                                android:id="@+id/tvCountBorderline"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="2"
-                                android:textColor="@color/amber_text"
-                                android:textSize="26sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Borderline"
-                                android:textColor="@color/amber_text"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <!-- 3. Not Eligible Card (Red) -->
-                        <LinearLayout
-                            android:id="@+id/cardIneligible"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="6dp"
-                            android:background="@drawable/bg_status_ineligible"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            android:padding="12dp"
-                            android:clickable="true"
-                            android:focusable="true">
-
-                            <ImageView
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
-                                android:src="@drawable/ic_cancel_circle"
-                                app:tint="@color/red_base"
-                                android:contentDescription="Not Eligible" />
-
-                            <TextView
-                                android:id="@+id/tvCountIneligible"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="1"
-                                android:textColor="@color/red_text"
-                                android:textSize="26sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Not Eligible"
-                                android:textColor="@color/red_text"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
+                            android:text="Adjust Marks ▼"
+                            android:textColor="@color/sacns_blue"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:padding="4dp" />
                     </LinearLayout>
 
-                    <!-- Filter Chips Row -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="APS calculated per SPU scale (1-8 points) with +2/+1 bonus for Pure Maths and Home Language, and Life Orientation points (0-4)."
+                        android:textColor="@color/text_muted"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="10dp" />
+
+                    <!-- Quick Preset Stream Buttons -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quick Test Presets:"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="4dp" />
+
                     <HorizontalScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:paddingBottom="8dp"
-                        android:scrollbars="none">
+                        android:scrollbars="none"
+                        android:layout_marginBottom="12dp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -294,83 +182,729 @@
                             android:orientation="horizontal">
 
                             <Button
-                                android:id="@+id/chipFilterAll"
+                                android:id="@+id/btnPresetStem"
                                 android:layout_width="wrap_content"
-                                android:layout_height="38dp"
-                                android:backgroundTint="@color/spu_navy"
-                                android:text="All Programmes (8)"
+                                android:layout_height="32dp"
+                                android:layout_marginEnd="6dp"
+                                android:backgroundTint="#EFF6FF"
+                                android:textColor="@color/sacns_blue"
+                                android:text="STEM (APS 37)"
                                 android:textAllCaps="false"
-                                android:textColor="@color/white"
-                                android:textSize="12sp"
-                                android:layout_marginEnd="6dp" />
+                                android:textSize="11sp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp" />
 
                             <Button
-                                android:id="@+id/chipFilterQualified"
+                                android:id="@+id/btnPresetCommerce"
                                 android:layout_width="wrap_content"
-                                android:layout_height="38dp"
-                                android:backgroundTint="#F1F5F9"
-                                android:text="Qualified (5)"
+                                android:layout_height="32dp"
+                                android:layout_marginEnd="6dp"
+                                android:backgroundTint="#EFF6FF"
+                                android:textColor="@color/sacns_blue"
+                                android:text="Commerce (APS 33)"
                                 android:textAllCaps="false"
-                                android:textColor="@color/text_secondary"
-                                android:textSize="12sp"
-                                android:layout_marginEnd="6dp" />
+                                android:textSize="11sp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp" />
 
                             <Button
-                                android:id="@+id/chipFilterBorderline"
+                                android:id="@+id/btnPresetEducation"
                                 android:layout_width="wrap_content"
-                                android:layout_height="38dp"
-                                android:backgroundTint="#F1F5F9"
-                                android:text="Borderline (2)"
+                                android:layout_height="32dp"
+                                android:layout_marginEnd="6dp"
+                                android:backgroundTint="#EFF6FF"
+                                android:textColor="@color/sacns_blue"
+                                android:text="Education (APS 31)"
                                 android:textAllCaps="false"
-                                android:textColor="@color/text_secondary"
-                                android:textSize="12sp"
-                                android:layout_marginEnd="6dp" />
+                                android:textSize="11sp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp" />
 
                             <Button
-                                android:id="@+id/chipFilterIneligible"
+                                android:id="@+id/btnPresetDiploma"
                                 android:layout_width="wrap_content"
-                                android:layout_height="38dp"
-                                android:backgroundTint="#F1F5F9"
-                                android:text="Not Eligible (1)"
+                                android:layout_height="32dp"
+                                android:backgroundTint="#EFF6FF"
+                                android:textColor="@color/sacns_blue"
+                                android:text="Diploma (APS 26)"
                                 android:textAllCaps="false"
-                                android:textColor="@color/text_secondary"
-                                android:textSize="12sp" />
+                                android:textSize="11sp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp" />
                         </LinearLayout>
                     </HorizontalScrollView>
 
-                    <!-- Search / Keyword Filter Box -->
-                    <EditText
-                        android:id="@+id/etSearchRecs"
+                    <!-- Expandable Subject Marks Entry Form -->
+                    <LinearLayout
+                        android:id="@+id/layoutSubjectInputs"
                         android:layout_width="match_parent"
-                        android:layout_height="42dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="12dp"
-                        android:background="@drawable/bg_input_field"
-                        android:drawableStart="@drawable/ic_search"
-                        android:drawablePadding="10dp"
-                        android:hint="Filter by name, subject, or faculty..."
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:textSize="13sp" />
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                    <!-- RecyclerView for Recommended Programme Cards -->
+                        <!-- Subject 1: English -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="6dp">
+
+                            <Spinner
+                                android:id="@+id/spinnerEnglishType"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="3"
+                                android:background="@drawable/bg_input_field" />
+
+                            <EditText
+                                android:id="@+id/etMarkEnglish"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1.2"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:gravity="center"
+                                android:hint="%"
+                                android:inputType="number"
+                                android:text="68"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvPtsEnglish"
+                                android:layout_width="48dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="6 pts"
+                                android:textColor="@color/sacns_blue"
+                                android:textStyle="bold"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- Subject 2: Mathematics -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="6dp">
+
+                            <Spinner
+                                android:id="@+id/spinnerMathsType"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="3"
+                                android:background="@drawable/bg_input_field" />
+
+                            <EditText
+                                android:id="@+id/etMarkMaths"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1.2"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:gravity="center"
+                                android:hint="%"
+                                android:inputType="number"
+                                android:text="72"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvPtsMaths"
+                                android:layout_width="48dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="8 pts"
+                                android:textColor="@color/sacns_blue"
+                                android:textStyle="bold"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- Subject 3: Life Orientation -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="6dp">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="3"
+                                android:background="@drawable/bg_input_field"
+                                android:gravity="center_vertical"
+                                android:paddingStart="10dp"
+                                android:text="Life Orientation (SPU: 0-4 pts)"
+                                android:textColor="@color/text_main"
+                                android:textSize="12sp" />
+
+                            <EditText
+                                android:id="@+id/etMarkLO"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1.2"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:gravity="center"
+                                android:hint="%"
+                                android:inputType="number"
+                                android:text="75"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvPtsLO"
+                                android:layout_width="48dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="2 pts"
+                                android:textColor="@color/sacns_blue"
+                                android:textStyle="bold"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- Subject 4 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="6dp">
+
+                            <Spinner
+                                android:id="@+id/spinnerSub4"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="3"
+                                android:background="@drawable/bg_input_field" />
+
+                            <EditText
+                                android:id="@+id/etMarkSub4"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1.2"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:gravity="center"
+                                android:hint="%"
+                                android:inputType="number"
+                                android:text="65"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvPtsSub4"
+                                android:layout_width="48dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="5 pts"
+                                android:textColor="@color/sacns_blue"
+                                android:textStyle="bold"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- Subject 5 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="6dp">
+
+                            <Spinner
+                                android:id="@+id/spinnerSub5"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="3"
+                                android:background="@drawable/bg_input_field" />
+
+                            <EditText
+                                android:id="@+id/etMarkSub5"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1.2"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:gravity="center"
+                                android:hint="%"
+                                android:inputType="number"
+                                android:text="62"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvPtsSub5"
+                                android:layout_width="48dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="5 pts"
+                                android:textColor="@color/sacns_blue"
+                                android:textStyle="bold"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- Subject 6 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="6dp">
+
+                            <Spinner
+                                android:id="@+id/spinnerSub6"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="3"
+                                android:background="@drawable/bg_input_field" />
+
+                            <EditText
+                                android:id="@+id/etMarkSub6"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1.2"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:gravity="center"
+                                android:hint="%"
+                                android:inputType="number"
+                                android:text="60"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvPtsSub6"
+                                android:layout_width="48dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="5 pts"
+                                android:textColor="@color/sacns_blue"
+                                android:textStyle="bold"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- Subject 7 -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginBottom="8dp">
+
+                            <Spinner
+                                android:id="@+id/spinnerSub7"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="3"
+                                android:background="@drawable/bg_input_field" />
+
+                            <EditText
+                                android:id="@+id/etMarkSub7"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_weight="1.2"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_input_field"
+                                android:gravity="center"
+                                android:hint="%"
+                                android:inputType="number"
+                                android:text="58"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvPtsSub7"
+                                android:layout_width="48dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="4 pts"
+                                android:textColor="@color/sacns_blue"
+                                android:textStyle="bold"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btnRecalculateAps"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:backgroundTint="@color/sacns_blue"
+                            android:text="Recalculate APS &amp; Match Programmes"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="8dp" />
+
+                    </LinearLayout>
+
+                    <!-- Calculated SPU APS Summary Card -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#F8FAFC"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:layout_marginTop="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Total Calculated SPU APS:"
+                                android:textColor="@color/text_main"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvTotalCalculatedAps"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/spu_navy"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:text="35 POINTS"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- Breakdown pills -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="8dp">
+
+                            <TextView
+                                android:id="@+id/tvBasePointsBadge"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="#E2E8F0"
+                                android:padding="4dp"
+                                android:gravity="center"
+                                android:text="Base: 31 pts"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="10sp"
+                                android:layout_marginEnd="4dp" />
+
+                            <TextView
+                                android:id="@+id/tvMathBonusBadge"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="#DCFCE7"
+                                android:padding="4dp"
+                                android:gravity="center"
+                                android:text="Maths +2"
+                                android:textColor="#166534"
+                                android:textSize="10sp"
+                                android:layout_marginEnd="4dp" />
+
+                            <TextView
+                                android:id="@+id/tvLangBonusBadge"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="#DCFCE7"
+                                android:padding="4dp"
+                                android:gravity="center"
+                                android:text="HL Lang +0"
+                                android:textColor="#166534"
+                                android:textSize="10sp"
+                                android:layout_marginEnd="4dp" />
+
+                            <TextView
+                                android:id="@+id/tvLoPointsBadge"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="#FEF3C7"
+                                android:padding="4dp"
+                                android:gravity="center"
+                                android:text="LO: 2 pts"
+                                android:textColor="#92400E"
+                                android:textSize="10sp" />
+                        </LinearLayout>
+
+                        <!-- English Requirement feedback -->
+                        <TextView
+                            android:id="@+id/tvEnglishRequirementStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="✓ English requirement met (SPU Level 4+)"
+                            android:textColor="#166534"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card 2: Recommended Programmes List Section -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recommended SPU Programmes"
+                        android:textColor="@color/text_main"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRecsSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="All 4 Faculties from the 2026 Undergraduate Prospectus"
+                        android:textColor="@color/text_muted"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Status Summary Counters -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <LinearLayout
+                            android:id="@+id/cardQualified"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_status_qualified"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="6dp"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <TextView
+                                android:id="@+id/tvCountQualified"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="14"
+                                android:textColor="@color/green_text"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Qualified"
+                                android:textColor="@color/green_text"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/cardBorderline"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_status_borderline"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:layout_marginEnd="6dp"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <TextView
+                                android:id="@+id/tvCountBorderline"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4"
+                                android:textColor="@color/amber_text"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Borderline"
+                                android:textColor="@color/amber_text"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/cardIneligible"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_status_ineligible"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:gravity="center"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <TextView
+                                android:id="@+id/tvCountIneligible"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4"
+                                android:textColor="@color/red_text"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ineligible"
+                                android:textColor="@color/red_text"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Faculty Filter Horizontal Scroll -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Filter by Faculty:"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="4dp" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"
+                        android:layout_marginBottom="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/chipFacultyAll"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_marginEnd="6dp"
+                                android:backgroundTint="@color/sacns_blue"
+                                android:textColor="@color/white"
+                                android:text="All Faculties (22)"
+                                android:textAllCaps="false"
+                                android:textSize="11sp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp" />
+
+                            <Button
+                                android:id="@+id/chipFacultyEducation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_marginEnd="6dp"
+                                android:backgroundTint="#F1F5F9"
+                                android:textColor="@color/text_main"
+                                android:text="Education (8)"
+                                android:textAllCaps="false"
+                                android:textSize="11sp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp" />
+
+                            <Button
+                                android:id="@+id/chipFacultyEMS"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_marginEnd="6dp"
+                                android:backgroundTint="#F1F5F9"
+                                android:textColor="@color/text_main"
+                                android:text="Economic &amp; Management (5)"
+                                android:textAllCaps="false"
+                                android:textSize="11sp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp" />
+
+                            <Button
+                                android:id="@+id/chipFacultyHumanities"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:layout_marginEnd="6dp"
+                                android:backgroundTint="#F1F5F9"
+                                android:textColor="@color/text_main"
+                                android:text="Humanities (3)"
+                                android:textAllCaps="false"
+                                android:textSize="11sp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp" />
+
+                            <Button
+                                android:id="@+id/chipFacultyNAS"
+                                android:layout_width="wrap_content"
+                                android:layout_height="32dp"
+                                android:backgroundTint="#F1F5F9"
+                                android:textColor="@color/text_main"
+                                android:text="Natural &amp; Applied Sciences (6)"
+                                android:textAllCaps="false"
+                                android:textSize="11sp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                    <!-- Search Input -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_input_field"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:layout_marginBottom="12dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_search"
+                            app:tint="@color/text_muted"
+                            android:layout_marginEnd="8dp" />
+
+                        <EditText
+                            android:id="@+id/etSearchRecs"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:hint="Search programme or career..."
+                            android:textColor="@color/text_main"
+                            android:textColorHint="@color/text_muted"
+                            android:textSize="13sp"
+                            android:inputType="text" />
+                    </LinearLayout>
+
+                    <!-- RecyclerView of Programmes -->
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvProgrammeRecommendations"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:paddingBottom="20dp"
                         android:nestedScrollingEnabled="false" />
 
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -51,13 +51,15 @@ public class DataRepository {
 
         loadLocalData();
 
-        // If local data is empty, populate with official SPU seed data
-        if (programmes.isEmpty()) {
+        // If local data is empty or outdated from older mocks, populate with official SPU 2026 seed data
+        if (programmes.size() < 22) {
+            programmes.clear();
             loadDefaultProgrammes();
             saveProgrammesLocally();
         }
 
-        if (buildings.isEmpty()) {
+        if (buildings.size() < 8 || !buildings.get(0).getName().contains("Luka Jantjie")) {
+            buildings.clear();
             loadDefaultBuildings();
             saveBuildingsLocally();
         }
@@ -231,52 +233,237 @@ public class DataRepository {
     }
 
     /* ==========================================================
-       Default Seed Data (Sol Plaatje University)
+       Default Seed Data (Sol Plaatje University 2026 Prospectus)
        ========================================================== */
     private void loadDefaultProgrammes() {
-        programmes.add(new Programme(1, "Diploma in ICT", "Faculty of Humanities", 28, "3 years",
-                "NSC Diploma endorsement. English Level 4 (50%), Mathematics Level 4 (50%) or Mathematical Literacy Level 6 (70%)."));
+        // FACULTY OF EDUCATION (Prospectus Pages 5 - 11)
+        programmes.add(new Programme(101,
+                "Bachelor of Education in Foundation Phase Teaching (Grade R-3) [EDU720]",
+                "Faculty of Education",
+                30,
+                "4 years",
+                "NSC Bachelor's endorsement. English HL Level 4 (50%) or English FAL Level 5 (60%). Afrikaans/Setswana/isiXhosa HL/FAL Level 4. Mathematics Level 3 (40%) or Mathematical Literacy Level 4 (50%). (Or APS 25 + SAQA accredited ECD Level 5).",
+                "NQF Level 7", "119582", "Bachelor's Degree",
+                "Foundation Phase Teacher (Grade R-3), Early Childhood Development Practitioner, Primary Education Specialist."));
 
-        programmes.add(new Programme(2, "Bachelor of Commerce", "Faculty of Management Sciences", 30, "3 years",
-                "NSC Degree endorsement. English Level 4 (50%), Mathematics Level 4 (50%) or Accounting Level 5 (60%)."));
+        programmes.add(new Programme(102,
+                "Bachelor of Education in Intermediate Phase Teaching (Maths, Sciences & Tech) [EDU723]",
+                "Faculty of Education",
+                30,
+                "4 years",
+                "NSC Bachelor's endorsement. English HL Level 4 or English FAL Level 5. Afrikaans/Setswana/isiXhosa Level 4. Compulsory: Mathematics Level 4, Physical Sciences Level 4, Life Sciences Level 4.",
+                "NQF Level 7", "99722", "Bachelor's Degree",
+                "Intermediate Phase Teacher (Grades 4-6) in Languages, Mathematics, Natural Sciences and Technology."));
 
-        programmes.add(new Programme(3, "Bachelor of Education", "Faculty of Humanities", 26, "4 years",
-                "NSC Degree endorsement. English Level 4 (50%), with relevant school teaching specialisation subjects."));
+        programmes.add(new Programme(103,
+                "Bachelor of Education in Intermediate Phase Teaching (Social Sciences & Life Skills) [EDU724]",
+                "Faculty of Education",
+                30,
+                "4 years",
+                "NSC Bachelor's endorsement. English HL Level 4 or English FAL Level 5. Afrikaans/Setswana/isiXhosa Level 4. Any one of: Geography Level 4 OR History Level 4.",
+                "NQF Level 7", "99722", "Bachelor's Degree",
+                "Intermediate Phase Teacher (Grades 4-6) in Languages, Social Sciences and Life Skills, Educational Advisor."));
 
-        programmes.add(new Programme(4, "BSc in Data Science", "Faculty of Natural & Applied Sciences", 34, "3 years",
-                "NSC Degree endorsement. English Level 5 (60%), Mathematics Level 5 (60%), Physical Sciences Level 4 (50%)."));
+        programmes.add(new Programme(104,
+                "Bachelor of Education in Senior & FET Phase (Life Sciences, Natural Sciences & Maths) [EDU740]",
+                "Faculty of Education",
+                30,
+                "4 years",
+                "NSC Bachelor's endorsement. English HL Level 4 or English FAL Level 5. Compulsory: Mathematics Level 4 AND Life Sciences Level 4.",
+                "NQF Level 7", "96406", "Bachelor's Degree",
+                "High School (Grades 7-12) Teacher in Mathematics, Natural Sciences, Life Sciences, STEM Education Specialist."));
 
-        programmes.add(new Programme(5, "Bachelor of Arts", "Faculty of Humanities", 25, "3 years",
-                "NSC Degree endorsement. English Level 4 (50%), plus two elective humanities disciplines at Level 4."));
+        programmes.add(new Programme(105,
+                "Bachelor of Education in Senior & FET Phase (Languages OR Language & History) [EDU741]",
+                "Faculty of Education",
+                30,
+                "4 years",
+                "NSC Bachelor's endorsement. English HL Level 4 or English FAL Level 5. Afrikaans HL/FAL Level 4 OR Setswana HL/FAL Level 4. History Level 4 if History is selected.",
+                "NQF Level 7", "96406", "Bachelor's Degree",
+                "High School (Grades 7-12) Teacher in Languages (English, Afrikaans, Setswana) and History."));
 
-        programmes.add(new Programme(6, "Diploma in Retail Business", "Faculty of Management Sciences", 36, "3 years",
-                "NSC Diploma endorsement. English Level 4 (50%), Business Studies or Accounting Level 5 (60%)."));
+        programmes.add(new Programme(106,
+                "Bachelor of Education in Senior & FET Phase (History, Social Sciences & Language) [EDU742]",
+                "Faculty of Education",
+                30,
+                "4 years",
+                "NSC Bachelor's endorsement. English HL Level 4 or English FAL Level 5. Afrikaans/Setswana Level 4. Compulsory: Geography Level 4 AND History Level 4.",
+                "NQF Level 7", "96406", "Bachelor's Degree",
+                "High School (Grades 7-12) Teacher in Geography, History, Social Sciences and Languages."));
 
-        programmes.add(new Programme(7, "BSc in Mathematical Sciences", "Faculty of Natural & Applied Sciences", 37, "3 years",
-                "NSC Degree endorsement. English Level 4 (50%), Mathematics Level 6 (70%), Physical Sciences Level 5 (60%)."));
+        programmes.add(new Programme(107,
+                "Bachelor of Education in Senior & FET Phase (Accounting, Economics & Business Studies) [EDU743]",
+                "Faculty of Education",
+                30,
+                "4 years",
+                "NSC Bachelor's endorsement. English HL Level 4 or English FAL Level 5. Any two of: Accounting Level 4, Business Studies Level 4, or Economics Level 4.",
+                "NQF Level 7", "96406", "Bachelor's Degree",
+                "High School (Grades 7-12) Commercial Educator in Accounting, Economics, Business Studies and EMS."));
 
-        programmes.add(new Programme(8, "Bachelor of Science in Physics", "Faculty of Natural & Applied Sciences", 40, "3 years",
-                "NSC Degree endorsement. English Level 5 (60%), Mathematics Level 6 (70%), Physical Sciences Level 6 (70%)."));
+        programmes.add(new Programme(108,
+                "Postgraduate Certificate in Education (PGCE)",
+                "Faculty of Education",
+                30,
+                "1 year",
+                "Approved Bachelor's degree (NQF Level 7) or 360-credit Diploma (NQF Level 6) with two recognised school subjects.",
+                "NQF Level 7", "119074", "Postgraduate Certificate",
+                "Accredited Secondary School Educator, School Subject Specialist, Education Official."));
+
+        // FACULTY OF ECONOMIC AND MANAGEMENT SCIENCES (Prospectus Pages 12 - 16)
+        programmes.add(new Programme(201,
+                "Bachelor of Commerce in Accounting",
+                "Faculty of Economic and Management Sciences",
+                30,
+                "3 years",
+                "NSC Bachelor's endorsement. English HL Level 4 or English FAL Level 5. Mathematics Level 5 (60%) OR (Mathematics Level 4 AND Accounting Level 3).",
+                "NQF Level 7", "118404", "Bachelor's Degree",
+                "Financial Accountant, Management Accountant, Financial Manager, Tax Practitioner, Internal Auditor, Finance Director, CFO, Consultant."));
+
+        programmes.add(new Programme(202,
+                "Bachelor of Commerce in Economics",
+                "Faculty of Economic and Management Sciences",
+                30,
+                "3 years",
+                "NSC Bachelor's endorsement. English HL Level 4 or English FAL Level 5. Mathematics Level 5 (60%) OR (Mathematics Level 4 AND Economics/Business Studies Level 3).",
+                "NQF Level 7", "118906", "Bachelor's Degree",
+                "Economist, Economic Researcher, Financial Risk Analyst, Market Forecaster, Investment Analyst, Economic Programmer."));
+
+        programmes.add(new Programme(203,
+                "Diploma in Retail Business Management",
+                "Faculty of Economic and Management Sciences",
+                25,
+                "3 years",
+                "NSC Diploma endorsement. English HL Level 4 or English FAL Level 5. Mathematics Level 3 OR Mathematical Literacy Level 5. At least one of: Accounting, Business Studies or Economics at Level 4.",
+                "NQF Level 6", "93648", "Diploma",
+                "Retail Trainee Manager, Merchandiser, Buyer, Stock Controller, Store Manager, Supply Chain Coordinator."));
+
+        programmes.add(new Programme(204,
+                "Advanced Diploma in Management",
+                "Faculty of Economic and Management Sciences",
+                25,
+                "1 year",
+                "Relevant Diploma at NQF Level 6 or Bachelor's degree with minimum 60% average in management-related subjects.",
+                "NQF Level 7", "108875", "Advanced Diploma",
+                "Strategic Manager, Project Manager, Operations Manager, Human Resources Manager, Managerial Finance Specialist."));
+
+        programmes.add(new Programme(205,
+                "Higher Certificate in Entrepreneurship",
+                "Faculty of Economic and Management Sciences",
+                25,
+                "1 year",
+                "NSC Higher Certificate endorsement. English HL/LOLT Level 4 or English FAL Level 5. Mathematics Level 3 OR Mathematical Literacy Level 4. At least one of Accounting, Business Studies or Economics at Level 3.",
+                "NQF Level 5", "123433", "Higher Certificate",
+                "Small Business Owner, Start-Up Entrepreneur, Business Consultant, Franchise Manager, Business Administrator, Junior Management."));
+
+        // FACULTY OF HUMANITIES (Prospectus Pages 17 - 20)
+        programmes.add(new Programme(301,
+                "Bachelor of Arts (B.A.)",
+                "Faculty of Humanities",
+                30,
+                "3 years",
+                "NSC Bachelor's endorsement. English HL Level 4 or English FAL Level 5. Mathematics Level 2 OR Mathematical Literacy Level 3. (Geography Level 4 required if majoring in Geography).",
+                "NQF Level 7", "98922", "Bachelor's Degree",
+                "Cultural Heritage Officer, Communications Specialist, Sociological Researcher, Public Relations, Policy Analyst, Journalist."));
+
+        programmes.add(new Programme(302,
+                "Higher Certificate in Heritage Studies",
+                "Faculty of Humanities",
+                25,
+                "1 year",
+                "NSC Higher Certificate endorsement. English HL Level 4 or English FAL Level 5. Mathematics Level 2 OR Mathematical Literacy Level 3.",
+                "NQF Level 5", "94804", "Higher Certificate",
+                "Museum Administrator, Archival Assistant, Heritage Site Officer, Tourism Officer, Cultural Resource Assistant."));
+
+        programmes.add(new Programme(303,
+                "Higher Certificate in Court Interpreting",
+                "Faculty of Humanities",
+                25,
+                "1 year",
+                "NSC Higher Certificate endorsement. English HL Level 4 or English FAL Level 5. At least one other African language at HL Level 4 OR FAL Level 5.",
+                "NQF Level 5", "115460", "Higher Certificate",
+                "Court & Legal Interpreter, Community Legal Liaison, Parliamentary/Government Interpreter, Health & Medical Interpreter."));
+
+        // FACULTY OF NATURAL AND APPLIED SCIENCES (Prospectus Pages 21 - 28)
+        programmes.add(new Programme(401,
+                "Bachelor of Science (B.Sc.)",
+                "Faculty of Natural and Applied Sciences",
+                30,
+                "3 years",
+                "NSC Bachelor's endorsement. English HL Level 4 or English FAL Level 5. Mathematics Level 4 (Mathematical Literacy not acceptable). Physical Sciences Level 4. Life Sciences Level 4.",
+                "NQF Level 7", "97908", "Bachelor's Degree",
+                "Biologist, Conservationist, Molecular Biologist, Statistician, Computer Programmer, Cyber Security Analyst, Physicist, Chemical Analyst, GIS Analyst."));
+
+        programmes.add(new Programme(402,
+                "Bachelor of Science in Data Science",
+                "Faculty of Natural and Applied Sciences",
+                30,
+                "3 years",
+                "NSC Bachelor's endorsement. English HL Level 4 or English FAL Level 5. Mathematics Level 5 (60%) (Mathematical Literacy not acceptable).",
+                "NQF Level 7", "96105", "Bachelor's Degree",
+                "Data Scientist, Data Architect, Data Analyst, Analytics Manager, Data Engineer, Intelligence Analyst, Machine Learning Specialist."));
+
+        programmes.add(new Programme(403,
+                "Bachelor of Environmental Science",
+                "Faculty of Natural and Applied Sciences",
+                30,
+                "4 years",
+                "NSC Bachelor's endorsement. English HL Level 4 or English FAL Level 5. Mathematics Level 4 (Mathematical Literacy not acceptable). Physical Sciences Level 4. Life Sciences Level 4.",
+                "NQF Level 8", "123429", "Bachelor's Degree",
+                "Environmental Consultant, Mining Environmental Specialist, Sustainability Manager, Climate Resilience Officer, Urban Planner Collaborator."));
+
+        programmes.add(new Programme(404,
+                "Diploma in Information and Communication Technology (ICT) in Applications Development",
+                "Faculty of Natural and Applied Sciences",
+                25,
+                "3 years",
+                "NSC Diploma endorsement. English HL Level 4 or English FAL Level 5. Mathematics Level 3 OR Mathematical Literacy Level 5. (CAT or IT highly recommended).",
+                "NQF Level 6", "93728", "Diploma",
+                "Software Application Developer, Web Developer, Systems Administrator, Solution Architect, Network Analyst, Software Analyst."));
+
+        programmes.add(new Programme(405,
+                "Diploma in Agriculture",
+                "Faculty of Natural and Applied Sciences",
+                25,
+                "3 years",
+                "NSC Diploma endorsement. English HL Level 4 or English FAL Level 5. Mathematics Level 3 OR Mathematical Literacy Level 5. Physical Science Level 3. Life Sciences Level 3 OR Agricultural Sciences Level 3.",
+                "NQF Level 6", "120923", "Diploma",
+                "Agricultural Entrepreneur, Agricultural Extension Officer, Farm Manager, Agricultural Advisor, Research Technician."));
+
+        programmes.add(new Programme(406,
+                "Advanced Diploma in ICT in Applications Development",
+                "Faculty of Natural and Applied Sciences",
+                25,
+                "1 year",
+                "3-year Diploma in ICT (NQF Level 6) or equivalent with at least 60% in third-year exit modules.",
+                "NQF Level 7", "111254", "Advanced Diploma",
+                "Senior Software Engineer, Solutions Architect, IT Systems Analyst, Applications Development Specialist."));
     }
 
     private void loadDefaultBuildings() {
-        buildings.add(new Building(1, "Administration Building", "admin",
-                "Main admin offices, Registrar, Admissions, and Student Finance", 265, 125));
+        // Sol Plaatje University Buildings explicitly required:
+        buildings.add(new Building(1, "Sol Plaatje University - North Campus: Luka Jantjie House", "admin",
+                "North Campus administrative headquarters, Vice-Chancellor's office, Council chambers, and Executive Management", 265, 125));
 
-        buildings.add(new Building(2, "ICT Building", "academic",
-                "Computer labs 1-6, IT Support Centre, and multimedia lecture auditoriums", 510, 125));
+        buildings.add(new Building(2, "Sol Plaatje University Central Campus", "academic",
+                "Central Campus core academic precinct, modern lecture halls, and student assembly square", 510, 125));
 
-        buildings.add(new Building(3, "Library", "facility",
-                "Main Sol Plaatje Memorial Library, study cubicles, and digital resource hub", 510, 375));
+        buildings.add(new Building(3, "Sol Plaatje University Library & Student Resource Centre", "facility",
+                "Iconic Sol Plaatje Memorial Library, multi-level learning commons, research hub, and digital study pods", 510, 375));
 
-        buildings.add(new Building(4, "Student Centre", "facility",
-                "Cafeteria, Student Representative Council (SRC) & Student Support Services", 265, 375));
+        buildings.add(new Building(4, "Moroka building", "facility",
+                "Historic Moroka residence hall, academic student support services, and communal learning zones", 265, 375));
 
-        buildings.add(new Building(5, "Science Labs Complex", "academic",
-                "Chemistry, Biology, and Physics research & teaching laboratories", 755, 125));
+        buildings.add(new Building(5, "ems building", "academic",
+                "Faculty of Economic and Management Sciences, specialized accounting labs, lecture auditoriums, and seminar rooms", 755, 125));
 
-        buildings.add(new Building(6, "Sports Complex", "sports",
-                "Indoor sports arena, gym, athletics office, and fitness pavilion", 755, 375));
+        buildings.add(new Building(6, "nas building", "academic",
+                "Faculty of Natural and Applied Sciences, advanced chemistry, physics, biology labs, and computing facilities", 755, 375));
+
+        buildings.add(new Building(7, "education building", "academic",
+                "Faculty of Education, teacher training lecture theatres, micro-teaching simulation suites, and pedagogical labs", 380, 250));
+
+        buildings.add(new Building(8, "humanities building", "academic",
+                "Faculty of Humanities, languages and communication studios, heritage studies seminar rooms, and staff offices", 630, 250));
     }
 
     /* ==========================================================
