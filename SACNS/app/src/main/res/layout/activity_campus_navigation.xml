@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -69,7 +70,9 @@
                                 android:text="Sol Plaatje University Kimberley Central Campus"
                                 android:textColor="#CBD5E1"
                                 android:textSize="13sp" />
+
                         </LinearLayout>
+
                     </LinearLayout>
 
                     <!-- Route Finder Box -->
@@ -150,7 +153,7 @@
                                 android:id="@+id/tvWalkingTime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="4 mins"
+                                android:text="--"
                                 android:textColor="@color/spu_navy"
                                 android:textSize="14sp"
                                 android:textStyle="bold"
@@ -168,44 +171,276 @@
                                 android:id="@+id/tvDistance"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="280 meters"
+                                android:text="--"
                                 android:textColor="@color/spu_navy"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
+
                         </LinearLayout>
 
-                        <!-- Campus Map Frame -->
+                        <!-- Campus Map -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Campus Map:"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="6dp" />
+
                         <FrameLayout
                             android:id="@+id/mapContainer"
                             android:layout_width="match_parent"
-                            android:layout_height="240dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_height="380dp"
                             android:background="#EEF2F6">
 
-                            <LinearLayout
+                            <za.ac.spu.sacns.Views.CampusMapView
+                                android:id="@+id/campusMapView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/btnZoomIn"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:orientation="vertical">
+                                android:layout_gravity="top|end"
+                                android:layout_margin="8dp"
+                                android:contentDescription="Zoom In"
+                                android:src="@android:drawable/ic_input_add"
+                                app:fabSize="mini"
+                                app:backgroundTint="@color/white"
+                                app:tint="@color/spu_navy"
+                                app:elevation="3dp"
+                                app:borderWidth="0dp" />
 
-                                <ImageView
-                                    android:layout_width="48dp"
-                                    android:layout_height="48dp"
-                                    android:layout_marginBottom="8dp"
-                                    android:src="@drawable/ic_map"
-                                    app:tint="@color/sacns_blue"
-                                    android:contentDescription="Campus Map" />
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/btnZoomOut"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top|end"
+                                android:layout_marginTop="52dp"
+                                android:layout_marginEnd="8dp"
+                                android:contentDescription="Zoom Out"
+                                android:src="@android:drawable/ic_input_delete"
+                                app:fabSize="mini"
+                                app:backgroundTint="@color/white"
+                                app:tint="@color/spu_navy"
+                                app:elevation="3dp"
+                                app:borderWidth="0dp" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="Interactive SPU Campus Map\n(Google Maps SDK / Vector Overlay)"
-                                    android:textColor="@color/text_muted"
-                                    android:textSize="13sp" />
-                            </LinearLayout>
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/btnResetMap"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top|end"
+                                android:layout_marginTop="96dp"
+                                android:layout_marginEnd="8dp"
+                                android:contentDescription="Reset Map"
+                                android:src="@android:drawable/ic_menu_revert"
+                                app:fabSize="mini"
+                                app:backgroundTint="@color/white"
+                                app:tint="@color/spu_navy"
+                                app:elevation="3dp"
+                                app:borderWidth="0dp" />
+
                         </FrameLayout>
+
+                        <!-- ==================== LEGEND (below the map) ==================== -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="#FFFFFF"
+                            android:padding="12dp"
+                            android:layout_marginTop="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Building Colour Key"
+                                android:textColor="@color/spu_navy"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="10dp" />
+
+                            <GridLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:columnCount="2"
+                                android:rowCount="8"
+                                android:useDefaultMargins="false">
+
+                                <!-- Row template: swatch + name. Two per row. -->
+
+                                <!-- WP -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#1E3A8A" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="William Pescod (WP)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C001 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#E53935" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Moroka Residence (C001)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C002 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#E53935" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Student Affairs (C002)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C003 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#F57C00" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Academic Building (C003)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C004 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#F8BBD0" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Library (C004)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C005 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#8E24AA" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Applied Sciences (C005)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C006 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#F57C00" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Data Science Labs (C006)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C007 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#26C6DA" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Science Lab (C007)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C008 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#FFEB3B" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Teaching Practice (C008)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C009 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#43A047" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Foundation Phase (C009)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C010 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#B71C1C" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Humanities Labs (C010)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C011 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#B71C1C" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Agriculture (C011)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C017 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#8E24AA" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Sports Pavilion (C017)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C018 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#8E24AA" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Spectator Seating (C018)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                                <!-- C019 -->
+                                <View android:layout_width="16dp" android:layout_height="16dp"
+                                    android:layout_marginTop="6dp"
+                                    android:background="#6D4C41" />
+                                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                    android:layout_columnWeight="1"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Sports Entrance (C019)"
+                                    android:textColor="@color/text_main"
+                                    android:textSize="12sp" />
+
+                            </GridLayout>
+
+                        </LinearLayout>
 
                         <!-- Selected Venue Details Card -->
                         <LinearLayout
@@ -221,7 +456,7 @@
                                 android:id="@+id/tvSelectedVenueName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="ICT Building"
+                                android:text=""
                                 android:textColor="@color/spu_navy"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
@@ -230,10 +465,11 @@
                                 android:id="@+id/tvSelectedVenueDesc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Computer labs 1-6, IT Support Centre, and multimedia lecture auditoriums"
+                                android:text=""
                                 android:textColor="@color/text_secondary"
                                 android:textSize="13sp"
                                 android:layout_marginTop="4dp" />
+
                         </LinearLayout>
 
                     </LinearLayout>

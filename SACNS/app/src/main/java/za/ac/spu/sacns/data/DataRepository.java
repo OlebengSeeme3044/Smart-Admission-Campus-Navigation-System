@@ -12,7 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import za.ac.spu.sacns.models.Building;
@@ -21,8 +20,11 @@ import za.ac.spu.sacns.models.Programme;
 public class DataRepository {
     private static final String TAG = "DataRepository";
     private static final String PREF_NAME = "sacns_data_prefs";
-    private static final String KEY_PROGRAMMES = "sacns_programmes_json";
-    private static final String KEY_BUILDINGS = "sacns_buildings_json";
+
+    // ✅ Key bumped to _v2 so stale cached buildings on any device are ignored
+    private static final String KEY_PROGRAMMES = "sacns_programmes_json_v3";
+    private static final String KEY_BUILDINGS  = "sacns_buildings_json_v3";
+
     private static final String KEY_USER_APS = "sacns_user_aps";
     private static final String KEY_USER_ROLE = "sacns_user_role";
 
@@ -260,23 +262,56 @@ public class DataRepository {
     }
 
     private void loadDefaultBuildings() {
-        buildings.add(new Building(1, "Administration Building", "admin",
-                "Main admin offices, Registrar, Admissions, and Student Finance", 265, 125));
+        // === SPU Central Campus — Real Buildings ===
 
-        buildings.add(new Building(2, "ICT Building", "academic",
-                "Computer labs 1-6, IT Support Centre, and multimedia lecture auditoriums", 510, 125));
+        // --- Top area (Scanlan St / William Pescod zone) ---
+        buildings.add(new Building(1, "William Pescod (WP)", "academic",
+                "WP Building — Central Campus academic facility", 620, 200));
 
-        buildings.add(new Building(3, "Library", "facility",
-                "Main Sol Plaatje Memorial Library, study cubicles, and digital resource hub", 510, 375));
+        buildings.add(new Building(2, "Teaching Practice (C008)", "academic",
+                "C008 — Teaching Practice Building", 560, 380));
 
-        buildings.add(new Building(4, "Student Centre", "facility",
-                "Cafeteria, Student Representative Council (SRC) & Student Support Services", 265, 375));
+        buildings.add(new Building(3, "Foundation Phase (C009)", "academic",
+                "C009 — Foundation Phase Building", 720, 300));
 
-        buildings.add(new Building(5, "Science Labs Complex", "academic",
-                "Chemistry, Biology, and Physics research & teaching laboratories", 755, 125));
+        // --- Middle Campus ---
+        buildings.add(new Building(4, "Moroka — Hall of Residence (C001)", "facility",
+                "C001 — Student Residence Hall", 400, 450));
 
-        buildings.add(new Building(6, "Sports Complex", "sports",
-                "Indoor sports arena, gym, athletics office, and fitness pavilion", 755, 375));
+        buildings.add(new Building(5, "Division of Student Affairs (C002)", "admin",
+                "C002 — Student Affairs Office", 450, 540));
+
+        buildings.add(new Building(6, "Academic Building (C003)", "academic",
+                "C003 — Main Academic Building", 660, 450));
+
+        buildings.add(new Building(7, "Library & Student Resources (C004)", "facility",
+                "C004 — Library & Student Resource Centre", 600, 560));
+
+        buildings.add(new Building(8, "Natural and Applied Sciences (C005)", "academic",
+                "C005 — Natural & Applied Sciences Building", 600, 640));
+
+        buildings.add(new Building(9, "Data Science & IT Labs (C006)", "academic",
+                "C006 — Data Science & IT Laboratories", 510, 700));
+
+        buildings.add(new Building(10, "Natural Sciences Lab (C007)", "academic",
+                "C007 — Natural Sciences Laboratory", 660, 700));
+
+        // --- Lower Campus ---
+        buildings.add(new Building(11, "Humanities & Heritage Sciences Labs (C010)", "academic",
+                "C010 — Humanities & Heritage Sciences Labs", 500, 800));
+
+        buildings.add(new Building(12, "Agricultural Sciences (C011)", "academic",
+                "C011 — Agricultural Sciences Building", 620, 800));
+
+        // --- Sports Precinct (Bottom) ---
+        buildings.add(new Building(13, "Central Campus Sports Pavilion (C017)", "sports",
+                "C017 — Sports Pavilion", 660, 1050));
+
+        buildings.add(new Building(14, "Spectator Seating (C018)", "sports",
+                "C018 — Sports Spectator Seating", 350, 1050));
+
+        buildings.add(new Building(15, "Sports Entrance (C019)", "sports",
+                "C019 — Sports Pavilion Entrance", 400, 950));
     }
 
     /* ==========================================================
@@ -340,6 +375,7 @@ public class DataRepository {
     private void syncWithFirestore() {
         if (firestore == null) return;
 
+        // --- Programmes sync (still active) ---
         firestore.collection("programmes").get().addOnSuccessListener(queryDocumentSnapshots -> {
             if (queryDocumentSnapshots != null && !queryDocumentSnapshots.isEmpty()) {
                 List<Programme> remote = new ArrayList<>();
@@ -369,6 +405,14 @@ public class DataRepository {
             }
         }).addOnFailureListener(e -> Log.d(TAG, "Firestore sync programmes notice: " + e.getMessage()));
 
+        // ============================================================
+        // ✅ BUILDINGS SYNC DISABLED
+        // Buildings now always come from loadDefaultBuildings() (local).
+        // This prevents Firestore from overwriting the SPU Central Campus list.
+        // Re-enable this block only if you later push the correct 15 SPU
+        // buildings to Firestore yourself.
+        // ============================================================
+        /*
         firestore.collection("buildings").get().addOnSuccessListener(queryDocumentSnapshots -> {
             if (queryDocumentSnapshots != null && !queryDocumentSnapshots.isEmpty()) {
                 List<Building> remote = new ArrayList<>();
@@ -387,7 +431,8 @@ public class DataRepository {
                     } catch (Exception ignored) {}
                 }
 
-                if (!remote.isEmpty()) {
+                // Only override local SPU Central Campus data if Firestore has the full set
+                if (remote.size() >= 15) {
                     synchronized (this) {
                         buildings.clear();
                         buildings.addAll(remote);
@@ -397,6 +442,7 @@ public class DataRepository {
                 }
             }
         }).addOnFailureListener(e -> Log.d(TAG, "Firestore sync buildings notice: " + e.getMessage()));
+        */
     }
 
     private void syncProgrammeToFirestore(Programme p) {
@@ -431,3 +477,4 @@ public class DataRepository {
                 .addOnFailureListener(e -> Log.d(TAG, "Cloud delete notice: " + e.getMessage()));
     }
 }
+
