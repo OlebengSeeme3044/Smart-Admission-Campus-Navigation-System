@@ -38,34 +38,25 @@
                         android:orientation="vertical"
                         android:padding="20dp">
 
+                        <!-- Header Row -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:gravity="center_vertical">
 
-                            <!-- Back to Dashboard Button -->
+                            <!-- Back Button -->
                             <ImageButton
                                 android:id="@+id/btnAdminBack"
-                                android:layout_width="38dp"
-                                android:layout_height="38dp"
-                                android:background="@drawable/circle_blue"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
                                 android:src="@android:drawable/ic_menu_revert"
                                 app:tint="@color/white"
                                 android:contentDescription="Back"
-                                android:layout_marginEnd="10dp" />
-
-                            <ImageView
-                                android:layout_width="38dp"
-                                android:layout_height="38dp"
-                                android:background="@drawable/circle_blue"
-                                android:padding="8dp"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/ic_admin_settings"
-                                app:tint="@color/white"
-                                android:contentDescription="Admin Control Panel"
                                 android:layout_marginEnd="12dp" />
 
+                            <!-- Title Section -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -77,7 +68,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="Admin Control Panel"
                                     android:textColor="@color/white"
-                                    android:textSize="19sp"
+                                    android:textSize="20sp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -85,47 +76,52 @@
                                     android:layout_height="wrap_content"
                                     android:text="Manage programmes, APS thresholds, and campus data"
                                     android:textColor="#CBD5E1"
-                                    android:textSize="12sp" />
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="2dp" />
                             </LinearLayout>
 
-                            <!-- Reset Seed Data Button -->
+                            <!-- Reset Data Button -->
                             <Button
                                 android:id="@+id/btnAdminResetData"
                                 android:layout_width="wrap_content"
-                                android:layout_height="34dp"
+                                android:layout_height="36dp"
                                 android:backgroundTint="#30FFFFFF"
                                 android:text="Reset Data"
                                 android:textAllCaps="false"
                                 android:textColor="@color/white"
-                                android:textSize="11sp"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp" />
+                                android:textSize="12sp"
+                                android:paddingStart="14dp"
+                                android:paddingEnd="14dp"
+                                app:cornerRadius="8dp" />
 
                         </LinearLayout>
 
-                        <!-- Live Analytics Statistics Row -->
+                        <!-- Statistics Cards -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:layout_marginTop="16dp"
-                            android:background="#1AFFFFFF"
-                            android:padding="10dp">
+                            android:layout_marginTop="20dp"
+                            android:gravity="center">
 
+                            <!-- Programmes Stat -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:orientation="vertical"
                                 android:gravity="center"
-                                android:orientation="vertical">
+                                android:background="#1AFFFFFF"
+                                android:padding="12dp"
+                                android:layout_marginEnd="8dp">
 
                                 <TextView
                                     android:id="@+id/tvAdminStatTotalProgs"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="8"
+                                    android:text="14"
                                     android:textColor="@color/white"
-                                    android:textSize="17sp"
+                                    android:textSize="22sp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -133,28 +129,29 @@
                                     android:layout_height="wrap_content"
                                     android:text="Programmes"
                                     android:textColor="#CBD5E1"
-                                    android:textSize="11sp" />
+                                    android:textSize="11sp"
+                                    android:layout_marginTop="2dp" />
                             </LinearLayout>
 
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:background="#40FFFFFF" />
-
+                            <!-- Avg APS Stat -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:orientation="vertical"
                                 android:gravity="center"
-                                android:orientation="vertical">
+                                android:background="#1AFFFFFF"
+                                android:padding="12dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp">
 
                                 <TextView
                                     android:id="@+id/tvAdminStatAvgAps"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="32"
+                                    android:text="28"
                                     android:textColor="@color/white"
-                                    android:textSize="17sp"
+                                    android:textSize="22sp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -162,20 +159,20 @@
                                     android:layout_height="wrap_content"
                                     android:text="Avg Min APS"
                                     android:textColor="#CBD5E1"
-                                    android:textSize="11sp" />
+                                    android:textSize="11sp"
+                                    android:layout_marginTop="2dp" />
                             </LinearLayout>
 
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:background="#40FFFFFF" />
-
+                            <!-- Venues Stat -->
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:orientation="vertical"
                                 android:gravity="center"
-                                android:orientation="vertical">
+                                android:background="#1AFFFFFF"
+                                android:padding="12dp"
+                                android:layout_marginStart="8dp">
 
                                 <TextView
                                     android:id="@+id/tvAdminStatTotalBuildings"
@@ -183,7 +180,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="6"
                                     android:textColor="@color/white"
-                                    android:textSize="17sp"
+                                    android:textSize="22sp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -191,7 +188,8 @@
                                     android:layout_height="wrap_content"
                                     android:text="Venues"
                                     android:textColor="#CBD5E1"
-                                    android:textSize="11sp" />
+                                    android:textSize="11sp"
+                                    android:layout_marginTop="2dp" />
                             </LinearLayout>
 
                         </LinearLayout>

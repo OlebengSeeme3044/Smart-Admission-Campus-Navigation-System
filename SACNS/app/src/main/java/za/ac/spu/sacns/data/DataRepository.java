@@ -51,18 +51,17 @@ public class DataRepository {
             Log.w(TAG, "Firestore initialization skipped: " + e.getMessage());
         }
 
-        loadLocalData();
+        // Clear cached programmes and load only official SPU seed data
+        prefs.edit().remove(KEY_PROGRAMMES).apply();
+        programmes.clear();
+        loadDefaultProgrammes();
+        saveProgrammesLocally();
 
-        // If local data is empty, populate with official SPU seed data
-        if (programmes.isEmpty()) {
-            loadDefaultProgrammes();
-            saveProgrammesLocally();
-        }
-
-        if (buildings.isEmpty()) {
-            loadDefaultBuildings();
-            saveBuildingsLocally();
-        }
+        // Clear cached buildings and load only official SPU seed data
+        prefs.edit().remove(KEY_BUILDINGS).apply();
+        buildings.clear();
+        loadDefaultBuildings();
+        saveBuildingsLocally();
 
         syncWithFirestore();
     }
@@ -236,29 +235,51 @@ public class DataRepository {
        Default Seed Data (Sol Plaatje University)
        ========================================================== */
     private void loadDefaultProgrammes() {
-        programmes.add(new Programme(1, "Diploma in ICT", "Faculty of Humanities", 28, "3 years",
-                "NSC Diploma endorsement. English Level 4 (50%), Mathematics Level 4 (50%) or Mathematical Literacy Level 6 (70%)."));
+        // Faculty of Economic and Management Sciences
+        programmes.add(new Programme(1, "Higher Certificate in Entrepreneurship", "Faculty of Economic and Management Sciences", 25, "1 year",
+                "NSC Certificate endorsement. English Level 3 (40%)."));
 
-        programmes.add(new Programme(2, "Bachelor of Commerce", "Faculty of Management Sciences", 30, "3 years",
+        programmes.add(new Programme(2, "Diploma in Retail Business Management", "Faculty of Economic and Management Sciences", 25, "3 years",
+                "NSC Diploma endorsement. English Level 4 (50%), Mathematics Level 3 (40%) or Mathematical Literacy Level 4 (50%)."));
+
+        programmes.add(new Programme(3, "Bachelor of Commerce (BCom) in Accounting", "Faculty of Economic and Management Sciences", 30, "3 years",
                 "NSC Degree endorsement. English Level 4 (50%), Mathematics Level 4 (50%) or Accounting Level 5 (60%)."));
 
-        programmes.add(new Programme(3, "Bachelor of Education", "Faculty of Humanities", 26, "4 years",
+        programmes.add(new Programme(4, "Bachelor of Commerce (BCom) in Economics", "Faculty of Economic and Management Sciences", 30, "3 years",
+                "NSC Degree endorsement. English Level 4 (50%), Mathematics Level 4 (50%)."));
+
+        // Faculty of Education
+        programmes.add(new Programme(5, "Bachelor of Education (BEd) in Foundation Phase Teaching (Grade R–3)", "Faculty of Education", 30, "4 years",
                 "NSC Degree endorsement. English Level 4 (50%), with relevant school teaching specialisation subjects."));
 
-        programmes.add(new Programme(4, "BSc in Data Science", "Faculty of Natural & Applied Sciences", 34, "3 years",
-                "NSC Degree endorsement. English Level 5 (60%), Mathematics Level 5 (60%), Physical Sciences Level 4 (50%)."));
+        programmes.add(new Programme(6, "Bachelor of Education (BEd) in Intermediate Phase Teaching (Grade 4–6)", "Faculty of Education", 30, "4 years",
+                "NSC Degree endorsement. English Level 4 (50%), with relevant school teaching specialisation subjects."));
 
-        programmes.add(new Programme(5, "Bachelor of Arts", "Faculty of Humanities", 25, "3 years",
+        programmes.add(new Programme(7, "Bachelor of Education (BEd) in Senior Phase & FET Teaching (Grade 7–12)", "Faculty of Education", 30, "4 years",
+                "NSC Degree endorsement. English Level 4 (50%), with relevant school teaching specialisation subjects."));
+
+        // Faculty of Humanities
+        programmes.add(new Programme(8, "Higher Certificate in Heritage Studies", "Faculty of Humanities", 25, "1 year",
+                "NSC Certificate endorsement. English Level 3 (40%)."));
+
+        programmes.add(new Programme(9, "Higher Certificate in Court Interpreting", "Faculty of Humanities", 25, "1 year",
+                "NSC Certificate endorsement. English Level 4 (50%), additional language requirement."));
+
+        programmes.add(new Programme(10, "Bachelor of Arts (BA)", "Faculty of Humanities", 30, "3 years",
                 "NSC Degree endorsement. English Level 4 (50%), plus two elective humanities disciplines at Level 4."));
 
-        programmes.add(new Programme(6, "Diploma in Retail Business", "Faculty of Management Sciences", 36, "3 years",
-                "NSC Diploma endorsement. English Level 4 (50%), Business Studies or Accounting Level 5 (60%)."));
+        // Faculty of Natural and Applied Sciences
+        programmes.add(new Programme(11, "Diploma in Agriculture", "Faculty of Natural and Applied Sciences", 25, "3 years",
+                "NSC Diploma endorsement. English Level 4 (50%), Mathematics Level 3 (40%) or Mathematical Literacy Level 4 (50%), Physical Sciences Level 3 (40%) or Life Sciences Level 3 (40%)."));
 
-        programmes.add(new Programme(7, "BSc in Mathematical Sciences", "Faculty of Natural & Applied Sciences", 37, "3 years",
-                "NSC Degree endorsement. English Level 4 (50%), Mathematics Level 6 (70%), Physical Sciences Level 5 (60%)."));
+        programmes.add(new Programme(12, "Diploma in Information and Communication Technology (ICT) in Applications Development", "Faculty of Natural and Applied Sciences", 25, "3 years",
+                "NSC Diploma endorsement. English Level 4 (50%), Mathematics Level 4 (50%) or Mathematical Literacy Level 6 (70%)."));
 
-        programmes.add(new Programme(8, "Bachelor of Science in Physics", "Faculty of Natural & Applied Sciences", 40, "3 years",
-                "NSC Degree endorsement. English Level 5 (60%), Mathematics Level 6 (70%), Physical Sciences Level 6 (70%)."));
+        programmes.add(new Programme(13, "Bachelor of Science (BSc) General", "Faculty of Natural and Applied Sciences", 30, "3 years",
+                "NSC Degree endorsement. English Level 4 (50%), Mathematics Level 4 (50%), Physical Sciences Level 4 (50%) or Life Sciences Level 4 (50%)."));
+
+        programmes.add(new Programme(14, "Bachelor of Science (BSc) in Data Science", "Faculty of Natural and Applied Sciences", 30, "3 years",
+                "NSC Degree endorsement. English Level 5 (60%), Mathematics Level 5 (60%), Physical Sciences Level 4 (50%)."));
     }
 
     private void loadDefaultBuildings() {
@@ -405,6 +426,7 @@ public class DataRepository {
             }
         }).addOnFailureListener(e -> Log.d(TAG, "Firestore sync programmes notice: " + e.getMessage()));
 
+
         // ============================================================
         // ✅ BUILDINGS SYNC DISABLED
         // Buildings now always come from loadDefaultBuildings() (local).
@@ -442,7 +464,7 @@ public class DataRepository {
                 }
             }
         }).addOnFailureListener(e -> Log.d(TAG, "Firestore sync buildings notice: " + e.getMessage()));
-        */
+*/
     }
 
     private void syncProgrammeToFirestore(Programme p) {

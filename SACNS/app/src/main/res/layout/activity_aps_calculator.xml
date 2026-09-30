@@ -95,6 +95,24 @@
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/addSubjectButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/rounded_add_button"
+                android:clickable="true"
+                android:drawableStart="@drawable/ic_add"
+                android:drawablePadding="8dp"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="Add Subject"
+                android:textColor="#155B87"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -211,24 +229,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/addSubjectButton"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="11dp"
-                android:gravity="center"
-                android:drawableStart="@drawable/ic_add"
-                android:drawablePadding="8dp"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:text="Add Subject"
-                android:textColor="#155B87"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:background="@drawable/rounded_add_button"
-                android:clickable="true"
-                android:focusable="true" />
 
         </LinearLayout>
 

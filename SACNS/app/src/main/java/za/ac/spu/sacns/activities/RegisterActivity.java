@@ -506,7 +506,7 @@ public class RegisterActivity extends AppCompatActivity {
                     idPassport,
                     country,
                     password,
-                    false
+                    true
             );
         }
     }
@@ -577,7 +577,7 @@ public class RegisterActivity extends AppCompatActivity {
                             idPassport,
                             country,
                             password,
-                            true
+                            false
                     );
                 });
     }
@@ -614,32 +614,46 @@ public class RegisterActivity extends AppCompatActivity {
 
                         String uid = user.getUid();
 
-                        user.sendEmailVerification()
-                                .addOnCompleteListener(verificationTask -> {
+                        if (requireEmailVerification) {
+                            // Send email verification for non-admin users
+                            user.sendEmailVerification()
+                                    .addOnCompleteListener(verificationTask -> {
 
-                                    if (verificationTask.isSuccessful()) {
+                                        if (verificationTask.isSuccessful()) {
 
-                                        createUserProfile(
-                                                uid,
-                                                firstName,
-                                                lastName,
-                                                email,
-                                                phone,
-                                                idPassport,
-                                                country
-                                        );
+                                            createUserProfile(
+                                                    uid,
+                                                    firstName,
+                                                    lastName,
+                                                    email,
+                                                    phone,
+                                                    idPassport,
+                                                    country
+                                            );
 
-                                    } else {
+                                        } else {
 
-                                        btnRegister.setEnabled(true);
+                                            btnRegister.setEnabled(true);
 
-                                        Toast.makeText(
-                                                RegisterActivity.this,
-                                                "Account created, but verification email could not be sent.",
-                                                Toast.LENGTH_LONG
-                                        ).show();
-                                    }
-                                });
+                                            Toast.makeText(
+                                                    RegisterActivity.this,
+                                                    "Account created, but verification email could not be sent.",
+                                                    Toast.LENGTH_LONG
+                                            ).show();
+                                        }
+                                    });
+                        } else {
+                            // Skip email verification for admin users
+                            createUserProfile(
+                                    uid,
+                                    firstName,
+                                    lastName,
+                                    email,
+                                    phone,
+                                    idPassport,
+                                    country
+                            );
+                        }
 
                     } else {
 
@@ -756,28 +770,53 @@ public class RegisterActivity extends AppCompatActivity {
 
                     if (task.isSuccessful()) {
 
-                        // Sign the user out until their email has been verified
-                        mAuth.signOut();
+                        if (selectedRole.equals("Admin")) {
+                            // Admin users can login immediately (verified via Firestore admin_accounts)
+                            mAuth.signOut();
 
-                        Toast.makeText(
-                                RegisterActivity.this,
-                                "Account created. Please check your email and verify your account before logging in.",
-                                Toast.LENGTH_LONG
-                        ).show();
+                            Toast.makeText(
+                                    RegisterActivity.this,
+                                    "Admin account created successfully. You can now login.",
+                                    Toast.LENGTH_LONG
+                            ).show();
 
-                        // Return to Login
-                        Intent intent = new Intent(
-                                RegisterActivity.this,
-                                LoginActivity.class
-                        );
+                            // Return to Login
+                            Intent intent = new Intent(
+                                    RegisterActivity.this,
+                                    LoginActivity.class
+                            );
 
-                        intent.putExtra(
-                                "USER_ROLE",
-                                selectedRole
-                        );
+                            intent.putExtra(
+                                    "USER_ROLE",
+                                    selectedRole
+                            );
 
-                        startActivity(intent);
-                        finish();
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            // Non-admin users must verify email first
+                            mAuth.signOut();
+
+                            Toast.makeText(
+                                    RegisterActivity.this,
+                                    "Account created. Please check your email and verify your account before logging in.",
+                                    Toast.LENGTH_LONG
+                            ).show();
+
+                            // Return to Login
+                            Intent intent = new Intent(
+                                    RegisterActivity.this,
+                                    LoginActivity.class
+                            );
+
+                            intent.putExtra(
+                                    "USER_ROLE",
+                                    selectedRole
+                            );
+
+                            startActivity(intent);
+                            finish();
+                        }
 
                     } else {
 

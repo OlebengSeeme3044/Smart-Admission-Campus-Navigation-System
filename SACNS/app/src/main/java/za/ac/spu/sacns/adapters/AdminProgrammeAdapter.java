@@ -53,12 +53,18 @@ public class AdminProgrammeAdapter extends RecyclerView.Adapter<AdminProgrammeAd
         holder.tvMinAps.setText(String.valueOf(programme.getMinAps()));
         holder.tvDuration.setText(programme.getDuration());
 
+        // Disable edit and delete for programmes - only official SPU data allowed
+        holder.btnEdit.setEnabled(false);
+        holder.btnEdit.setAlpha(0.3f);
+        holder.btnDelete.setEnabled(false);
+        holder.btnDelete.setAlpha(0.3f);
+
         holder.btnEdit.setOnClickListener(v -> {
-            if (listener != null) listener.onEdit(programme);
+            // No action - editing disabled
         });
 
         holder.btnDelete.setOnClickListener(v -> {
-            if (listener != null) listener.onDelete(programme);
+            // No action - deletion disabled
         });
     }
 

@@ -168,8 +168,9 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (user != null) {
 
-                            // Check whether the user's email has been verified
-                            if (!user.isEmailVerified()) {
+                            // Admin users skip email verification (verified via Firestore admin_accounts)
+                            // Non-admin users must verify email first
+                            if (!"Admin".equalsIgnoreCase(selectedRole) && !user.isEmailVerified()) {
 
                                 btnLogin.setEnabled(true);
 
@@ -182,7 +183,6 @@ public class LoginActivity extends AppCompatActivity {
                                 return;
                             }
 
-                            // Email is verified.
                             // Get the Firebase Authentication UID.
                             String uid = user.getUid();
 
@@ -310,6 +310,10 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent;
         if ("Admin".equalsIgnoreCase(role)) {
             intent = new Intent(LoginActivity.this, AdminPanelActivity.class);
+        } else if ("Prospective".equalsIgnoreCase(role)) {
+            intent = new Intent(LoginActivity.this, ApsCalculatorActivity.class);
+        } else if ("Current".equalsIgnoreCase(role)) {
+            intent = new Intent(LoginActivity.this, CampusNavigationActivity.class);
         } else {
             intent = new Intent(LoginActivity.this, MainActivity.class);
         }

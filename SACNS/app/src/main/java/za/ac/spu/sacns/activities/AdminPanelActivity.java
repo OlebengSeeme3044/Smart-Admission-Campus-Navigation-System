@@ -37,7 +37,7 @@ public class AdminPanelActivity extends AppCompatActivity implements DataReposit
     private static final int TAB_CAMPUS = 1;
 
     private DataRepository repository;
-    private int currentTab = TAB_PROGRAMMES;
+    private int currentTab = TAB_CAMPUS;
 
     private Programme editingProgramme = null;
     private Building editingBuilding = null;
@@ -98,6 +98,7 @@ public class AdminPanelActivity extends AppCompatActivity implements DataReposit
         setupFormHandlers();
         setupSearchFilter();
         setupAdapters();
+        updateViewForTab();
         refreshAllData();
     }
 
@@ -224,7 +225,8 @@ public class AdminPanelActivity extends AppCompatActivity implements DataReposit
     private void setupFormHandlers() {
         btnAdminAddAction.setOnClickListener(v -> {
             if (currentTab == TAB_PROGRAMMES) {
-                openAddProgramme();
+                // Disable adding programmes - only official SPU data allowed
+                Toast.makeText(this, "Programme management is disabled. Only official SPU programmes are available.", Toast.LENGTH_LONG).show();
             } else {
                 openAddBuilding();
             }

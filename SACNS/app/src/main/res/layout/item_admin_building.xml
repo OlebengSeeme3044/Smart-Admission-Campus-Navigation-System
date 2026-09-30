@@ -58,7 +58,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_edit"
+            android:src="@drawable/ic_edit"
             android:contentDescription="Edit"
             app:tint="@color/spu_blue_accent"
             xmlns:app="http://schemas.android.com/apk/res-auto" />
@@ -68,7 +68,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_delete"
+            android:src="@drawable/ic_delete"
             android:contentDescription="Delete"
             app:tint="@color/red_base"
             xmlns:app="http://schemas.android.com/apk/res-auto" />

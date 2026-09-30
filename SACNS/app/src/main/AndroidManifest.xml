@@ -41,9 +41,11 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- User Registration Activity -->
         <activity
             android:name=".activities.RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <!-- Admin Control Panel Activity (Advanced features) -->
         <activity

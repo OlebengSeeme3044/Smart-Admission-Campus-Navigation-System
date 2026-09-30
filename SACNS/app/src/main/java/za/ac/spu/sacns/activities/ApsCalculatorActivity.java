@@ -1,6 +1,7 @@
 package za.ac.spu.sacns.activities;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -1011,6 +1012,17 @@ public class ApsCalculatorActivity extends AppCompatActivity {
                                         + aps
                         )
                         .setPositiveButton(
+                                "View Programme Recommendations",
+                                (d, which) -> {
+                                    Intent intent = new Intent(
+                                            ApsCalculatorActivity.this,
+                                            ProgrammeRecommendationsActivity.class
+                                    );
+                                    intent.putExtra("USER_APS", aps);
+                                    startActivity(intent);
+                                }
+                        )
+                        .setNegativeButton(
                                 "Done",
                                 null
                         )
